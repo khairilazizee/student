@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		<table width="100%" cellspacing="0" cellpadding="0">
+		<table width="100%" cellspacing="0" cellpadding="0" id="table_markah">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -66,11 +66,15 @@
 			</thead>
 			<tbody>
 				<?php $totalcreditHour = $bil1 = 0; foreach($year1 as $year1s): $bil1++;?>
-					<tr>
+					<tr class="main_petak">
 						<td><?php echo $bil1;?></td>
-						<td><?php echo $year1s->subject_desc;?></td>
 						<td>
-							<input type="text" name="simpanMarkah[]" class="markah1" rowid="<?php echo $bil1;?>">
+							<?php echo $year1s->subject_desc;?>
+							<input type="hidden" id="subject_code" class="subject_code" rowid="<?php echo $bil1;?>" value="<?php echo $year1s->subject_code;?>">	
+							<input type="hidden" id="id_subject" class="id_subject" rowid="<?php echo $bil1;?>" value="<?php echo $year1s->id_subject;?>">	
+						</td>
+						<td>
+							<input type="text" name="simpanMarkah[]" class="markah1" id="markah1" rowid="<?php echo $bil1;?>">
 							<input type="hidden" id="year" class="year" rowid="<?php echo $bil1;?>" value="2">
 						</td>
 						<td style="text-align:center;"><span id="percentMarkah1" class="percentMarkah1" rowid="<?php echo $bil1;?>"></span></td>
@@ -110,8 +114,8 @@
 				</tr>
 				<tr>
 					<td colspan="8" style="text-align:center;">
-						<button class="button small">Save</button>
-						<button class="button small secondary">Back</button>
+						<button class="button small" id="btnSubmitMarkah">Save</button>
+						<button class="button small secondary" id="btnBackMarkah">Back</button>
 					</td>
 				</tr>
 			</tbody>

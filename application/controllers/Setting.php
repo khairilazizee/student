@@ -37,4 +37,26 @@ class Setting extends CI_Controller {
 
 	}
 
+	public function simpan_markah(){
+
+		$data = $this->input->post();
+
+		$query = $this->setting_model->simpan_markah($data);
+
+		echo $query;
+
+		// echo $data['subject'];
+
+	}
+
+	public function simpan_gpa(){
+
+		$data = $this->input->post();
+
+		$query = $this->setting_model->simpan_gpa($data);
+
+		echo $query;
+
+	}
+
 }
