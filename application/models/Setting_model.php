@@ -25,16 +25,20 @@ class Setting_model extends CI_Model {
 
 	}
 
-	public function kira_cgpa($studentid){
+	public function kira_cgpa($studentid,$student_year){
 
-		$this->db->select("SUM(credit_hour) as credit_hour, SUM(credit_point) as credit_point");
+		// $last_year = 
+
+		$this->db->select("SUM(credit_hour) as credit_hour, SUM(credit_point) as credit_point, student_year");
 		$this->db->where("id_student", $studentid);
+		$this->db->where("student_year <", $student_year);
 		$query = $this->db->get("tbl_student_gpa");
 		// echo $this->db->last_query();exit;
 		foreach($query->result() as $row){
 
 			$credit_hour = $row->credit_hour;
 			$credit_point = $row->credit_point;
+			$year = $row->student_year;
 
 			if($credit_hour<>""){
 				return $credit_hour."|".$credit_point;
@@ -61,7 +65,23 @@ class Setting_model extends CI_Model {
 
 	 	);
 
-		$query = $this->db->insert("tbl_marks", $output);
+		//check
+		$this->db->where("id_student", $data["id_student"]);
+		$this->db->where("id_subject", $data["id_subject"]);
+		$check = $this->db->get("tbl_marks");
+
+		$row_check = $check->row();
+
+		if(isset($row_check)){
+			$this->db->where("id_student", $data["id_student"]);
+			$this->db->where("id_subject", $data["id_subject"]);
+			$query = $this->db->update("tbl_marks", $output);
+		} else {
+			$query = $this->db->insert("tbl_marks", $output);
+		}
+
+
+		
 		// echo $this->db->last_query();exit;
 		if($query){
 			return 1;
@@ -82,7 +102,22 @@ class Setting_model extends CI_Model {
 			"cgpa" => $data["cgpa"]
 		);
 
-		$query = $this->db->insert("tbl_student_gpa", $output);
+
+		//check
+		$this->db->where("id_student", $data["id_student"]);
+		$this->db->where("student_year", $data["student_year"]);
+		$check = $this->db->get("tbl_student_gpa");
+
+		$row_check = $check->row();
+
+		if(isset($row_check)){
+			$this->db->where("id_student", $data["id_student"]);
+			$this->db->where("student_year", $data["student_year"]);
+			$query = $this->db->update("tbl_student_gpa", $output);
+		} else {
+			$query = $this->db->insert("tbl_student_gpa", $output);
+		}
+
 		// echo $this->db->last_query();exit;
 		if($query){
 			return 1;
@@ -92,4 +127,4 @@ class Setting_model extends CI_Model {
 
 	}
 
-}
+}	

@@ -30,8 +30,9 @@ class Setting extends CI_Controller {
 	public function kira_cgpa(){
 
 		$studentid = $this->input->post("studentid");
+		$student_year = $this->input->post("student_year");
 
-		$query = $this->setting_model->kira_cgpa($studentid);
+		$query = $this->setting_model->kira_cgpa($studentid,$student_year);
 
 		echo $query;
 

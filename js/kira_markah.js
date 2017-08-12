@@ -5,6 +5,7 @@ $(document).ready(function(){
 		var total1 = $("#total1").val();
 		var rowid = $(this).attr("rowid");
 		var studentid = $("#studentid").val();
+		var studentYear = $("#studentYear").val();
 
 		var markah1 = $(".markah1[rowid='"+rowid+"']").val();
 		var hdnUrl = $("#hdnUrl").val();
@@ -43,7 +44,7 @@ $(document).ready(function(){
 		$.ajax({
 			url : hdnUrl+"setting/kira_cgpa",
 			type : "POST",
-			data : "studentid="+studentid,
+			data : "studentid="+studentid+"&student_year="+studentYear,
 			success : function(data){
 				// alert(data);
 				if(data != 0){
@@ -104,8 +105,10 @@ $(document).ready(function(){
 		var gpa = $("#gpa1").html();
 		var cgpa = $("#cgpa1").html();
 
-		$.post(hdnUrl+"setting/simpan_gpa",{id_student:studentid,student_year:studentYear,credit_hour:totalCreditHour,credit_point:totalCreditPoint,gpa:gpa,cgpa:cgpa}).done(function(x){
-
+		$.post(hdnUrl+"setting/simpan_gpa",{id_student:studentid,student_year:studentYear,credit_hour:totalCreditHour,credit_point:totalCreditPoint,gpa:gpa,cgpa:cgpa}).done(function(y){
+			if(y==1){
+				location.href=hdnUrl+'home'
+			}
 		});
 		
 
