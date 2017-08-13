@@ -110,6 +110,12 @@
 				<tr>
 					<td colspan="8">&nbsp;</td>
 				</tr>
+				<tr>
+					<td colspan="8" style="text-align:center;">
+						<input type="hidden" id="hdnUrl" value="<?php echo base_url();?>">
+						<button class="button small secondary" id="btnBackMarkah">Back</button>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
