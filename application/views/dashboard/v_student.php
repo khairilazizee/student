@@ -24,8 +24,8 @@
 						<td><?php echo $list->student_stuid;?></td>
 						<td><?php echo $list->student_name;?></td>
 						<td style="text-align:center;"><?php echo $list->student_year;?></td>
-						<td width="10"><a href="<?php echo base_url();?>home/mark/<?php echo $list->student_stuid;?>/<?php echo $list->student_year;?>">Mark</a></td>
-						<td width="10">Edit</td>
+						<td width="10"><a href="<?php echo base_url();?>home/mark/<?php echo $list->student_stuid;?>/<?php echo $list->student_year;?>">Insert / Update</a></td>
+						<td width="10"><a href="<?php echo base_url();?>home/view/<?php echo $list->student_stuid;?>/<?php echo $list->student_year;?>">View</a></td>
 						<td width="10">Delete</td>
 					</tr>
 				<?php endforeach;?>

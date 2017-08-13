@@ -36,12 +36,13 @@
 				<?php echo $info->student_reg_no;?>
 			</div>
 		</div>
-	</div>
+	
 	<?php
 
 	endforeach;
 
 	?>
+	</div>
 	<p>&nbsp;</p>
 	<div class="small-12 columns">
 		<div class="title-bar">

@@ -13,4 +13,21 @@ class Subject_model extends CI_Model {
 
 	}
 
+	public function view_markah($studentid,$year,$cond){
+
+		if($cond=="top"){
+			$this->db->where("tbl_marks.student_year", $year);
+			$this->db->where("tbl_marks.id_student", $studentid);
+			$this->db->from("tbl_marks");
+			$this->db->join("tbl_subject","tbl_subject.subject_code=tbl_marks.id_subject","LEFT");
+			$query = $this->db->get();
+		} elseif($cond=="bottom"){
+			$this->db->where("id_student", $studentid);
+			$query = $this->db->get("tbl_student_gpa");
+		}
+
+		return $query->result();
+
+	}
+
 }

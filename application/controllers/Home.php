@@ -38,4 +38,19 @@ class Home extends CI_Controller {
 
 	}
 
+	public function view($studentid,$year){
+
+		$data["title"] = "View Mark";
+		$data["student_information"] = $this->student_model->student_information($studentid,$year);
+		$data["student_marks"] = $this->subject_model->view_markah($studentid,$year,"top");
+		$data["student_gpa"] = $this->subject_model->view_markah($studentid,$year,"bottom");
+		$data["student_year"] = $year;
+
+		$this->load->view("main/header", $data);
+		$this->load->view("main/topbar");
+		$this->load->view("dashboard/v_mark", $data);
+		$this->load->view("main/footer");
+
+	}
+
 }
