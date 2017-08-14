@@ -3,10 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Student_model extends CI_Model {
 
-	public function allStudent(){
+	public function allStudent($search = ""){
+
+		if($search<>""){
+			$this->db->like("student_name", $search, "both");
+		}
 
 		$query = $this->db->get("tbl_student");
-
+		// echo $this->db->last_query();exit;
 		return $query->result();
 
 	}

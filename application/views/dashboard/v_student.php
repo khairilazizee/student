@@ -1,5 +1,18 @@
 <div class="row">
 	<div class="small-12 columns">
+		<form action="" method="POST">
+			<div class="input-group">
+			  <!-- <span class="input-group-label">$</span> -->
+			  <input class="input-group-field" type="text" name="search_name" placeholder="Student Name">
+			  <div class="input-group-button">
+			    <input type="submit" class="button" value="Submit">
+			  </div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
 		<div class="title-bar">
 			<div class="title-bar-left">
 				<div class="title-bar-title">

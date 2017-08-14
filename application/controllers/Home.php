@@ -13,9 +13,11 @@ class Home extends CI_Controller {
 
 	public function index(){
 
+		$search = $this->input->post("search_name");
+
 		$data["title"] = "Student List";
 
-		$data["student_list"] = $this->student_model->allStudent();
+		$data["student_list"] = $this->student_model->allStudent($search);
 
 		$this->load->view("main/header", $data);
 		$this->load->view("main/topbar");
