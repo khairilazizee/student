@@ -42,6 +42,15 @@
 						<td width="10">Delete</td>
 					</tr>
 				<?php endforeach;?>
+				<tr>
+					<td colspan="7">
+						<?php
+
+							echo $this->pagination->create_links();
+
+						?>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

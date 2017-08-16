@@ -15,6 +15,14 @@ class Home extends CI_Controller {
 
 		$search = $this->input->post("search_name");
 
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url()."home";
+		$config['total_rows'] = $this->student_model->count_all();
+		$config['per_page'] = 20;
+
+		$this->pagination->initialize($config);
+
 		$data["title"] = "Student List";
 
 		$data["student_list"] = $this->student_model->allStudent($search);

@@ -3,6 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Student_model extends CI_Model {
 
+	public function count_all(){
+
+		$query = $this->db->get("tbl_student");
+
+		return $query->num_rows();
+
+	}
+
 	public function allStudent($search = ""){
 
 		if($search<>""){
