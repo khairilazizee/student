@@ -9,5 +9,6 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/app.css">
     <script src="<?php echo base_url();?>js/jquery_3.1.2.js"></script>
     <script src="<?php echo base_url();?>js/kira_markah.js"></script>
+    <script src="<?php echo base_url();?>js/carian.js"></script>
   </head>
   <body>

@@ -16,12 +16,12 @@ class Home extends CI_Controller {
 		$_SESSION['search'] = "";
 		$search = $this->input->post("search_name");
                 
-                if($search<>""){
-                	$_SESSION['search'] = $search;
-                }
+        if($search<>""){
+        	$_SESSION['search'] = $search;
+        }
 
-                
-                echo $_SESSION['search'];
+        
+        // echo $_SESSION['search'];
 
 		$this->load->library('pagination');
 
