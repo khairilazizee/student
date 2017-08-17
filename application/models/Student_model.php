@@ -11,13 +11,13 @@ class Student_model extends CI_Model {
 
 	}
 
-	public function allStudent($search = ""){
+	public function allStudent($search = "", $per_page, $uri){
 
 		if($search<>""){
 			$this->db->like("student_name", $search, "both");
 		}
 
-		$query = $this->db->get("tbl_student");
+		$query = $this->db->get("tbl_student", $per_page, $uri);
 		// echo $this->db->last_query();exit;
 		return $query->result();
 
