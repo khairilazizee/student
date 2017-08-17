@@ -14,7 +14,7 @@
 </div>
 <div class="row">
 	<div class="small-12 columns">
-		<span>Item <?php echo $search;?> : <?php echo $count_search;?> found</span>
+		<span>Item <strong><?php echo $search;?></strong> : <strong><?php echo $count_search;?></strong> found</span>
 	</div>
 </div>
 <div class="row">
