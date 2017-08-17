@@ -14,6 +14,9 @@ class Home extends CI_Controller {
 	public function index(){
 
 		$search = $this->input->post("search_name");
+                if($search<>""){
+                   $search = $search;
+                }
 
 		$this->load->library('pagination');
 
@@ -24,8 +27,8 @@ class Home extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data["title"] = "Student List";
-		$this->db->like("student_name", $search, "both");
-		$data["student_list"] = $this->db->get("tbl_student", $config['per_page'], $this->uri->segment(2));
+
+		$data["student_list"] = $this->student_model->allStudent($search, $config['per_page'], $this->uri->segment(2));
 
 		$this->load->view("main/header", $data);
 		$this->load->view("main/topbar");
