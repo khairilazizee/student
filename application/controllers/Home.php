@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 
 		$this->load->library('pagination');
 
-		$config['base_url'] = base_url()."home";
+		$config['base_url'] = base_url()."home/index";
 		$config['total_rows'] = $this->student_model->count_all();
 		$config['per_page'] = 20;
 
@@ -28,7 +28,7 @@ class Home extends CI_Controller {
 
 		$data["title"] = "Student List";
 
-		$data["student_list"] = $this->student_model->allStudent($search, $config['per_page'], $this->uri->segment(2));
+		$data["student_list"] = $this->student_model->allStudent($search, $config['per_page'], $this->uri->segment(3));
 
 		$this->load->view("main/header", $data);
 		$this->load->view("main/topbar");
