@@ -24,8 +24,8 @@ class Home extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data["title"] = "Student List";
-
-		$data["student_list"] = $this->student_model->allStudent($search);
+		$this->db->like("student_name", $search, "both");
+		$data["student_list"] = $this->db->get("tbl_student", $config['per_page'], $this->uri->segment(2));
 
 		$this->load->view("main/header", $data);
 		$this->load->view("main/topbar");
